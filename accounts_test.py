@@ -49,7 +49,17 @@ class TestContact(unittest.TestCase):
             test_account = Credentials("Instagram","Test","user123") # new account
             test_account.save_account()
             self.assertEqual(len(Credentials.accounts_list),2)
+    
+    def test_delete_account(self):
+            '''
+            test_delete_account to test if an account can be removed from list
+            '''
+            self.new_account.save_account()
+            test_account = Credentials("Instagram","Test","user123") # new account
+            test_account.save_account()
 
+            self.new_account.delete_account()# Deleting account 
+            self.assertEqual(len(Credentials.accounts_list),1)
 
 if __name__ == '__main__':
     unittest.main()
