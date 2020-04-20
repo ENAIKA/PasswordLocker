@@ -32,6 +32,24 @@ class TestContact(unittest.TestCase):
         self.assertEqual(self.new_account.password,"Muri5678")
         
 
+    def test_save_account(self):
+        '''
+        test_save_account test case to test if the object is saved into
+         the accounts list
+        '''
+        self.new_account.save_account() # saving new account
+        self.assertEqual(len(Credentials.accounts_list),1)
+
+    def test_save_multiple_account(self):
+            '''
+            test_save_multiple_account to check if multiple accounts
+            can be saved
+            '''
+            self.new_account.save_account()
+            test_account = Credentials("Instagram","Test","user123") # new account
+            test_account.save_account()
+            self.assertEqual(len(Credentials.accounts_list),2)
+
 
 if __name__ == '__main__':
     unittest.main()
