@@ -26,8 +26,19 @@ class TestUser(unittest.TestCase):
         test_save_contact test case to test if the contact object is saved into
          the contact list
         '''
-        self.new_user.save_user() # saving the new contact
+        self.new_user.save_user() # saving the new user
         self.assertEqual(len(User.users_list),1)
+
+    def test_save_multiple_user(self):
+            '''
+            test_save_multiple_contact to check if we can save multiple contact
+            objects to our contact_list
+            '''
+            self.new_user.save_user()
+            test_user = User("Test","user123") # new user
+            test_user.save_user()
+            self.assertEqual(len(User.users_list),2)
+
 
     
 if __name__ == '__main__':
