@@ -1,5 +1,5 @@
 import unittest # Importing the unittest module
-from user import User # Importing the contact class
+from user import User # Importing the user class
 
 class TestUser(unittest.TestCase):
 
@@ -11,7 +11,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method runs before each test cases.
         '''
-        self.new_user = User("Naika","Nakish254") # create contact object
+        self.new_user = User("Naika","Nakish254") # create user object
 
     def tearDown(self):
             '''
@@ -71,7 +71,7 @@ class TestUser(unittest.TestCase):
 
     def test_user_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the contact.
+        test to check if we can return a Boolean  if we cannot find the user.
         '''
 
         self.new_user.save_user()
