@@ -61,5 +61,39 @@ class TestContact(unittest.TestCase):
             self.new_account.delete_account()# Deleting account 
             self.assertEqual(len(Credentials.accounts_list),1)
 
+    def test_find_account(self):
+        '''
+        test to check accounts by accountName and display information
+        '''
+
+        self.new_account.save_account()
+        test_account = Credentials("Instagram","Test","user123") # new account
+        test_account.save_account()
+
+        found_account = Credentials.find_account("Instagram")
+
+        self.assertEqual(found_account.accountName,test_account.accountName)
+
+    def test_account_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find account.
+        '''
+
+        self.new_account.save_account()
+        test_account = Credentials("Instagram","Test","user123") # new account
+        test_account.save_account()
+
+        account_exists = Credentials.account_exist("Instagram")
+
+        self.assertTrue(account_exists)
+
+    def test_display_accounts(self):
+        '''
+        method that returns a list of accounts saved
+        '''
+
+        self.assertEqual(Credentials.display_accounts(),Credentials.accounts_list)
+
+
 if __name__ == '__main__':
     unittest.main()
