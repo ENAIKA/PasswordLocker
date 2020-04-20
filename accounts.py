@@ -12,7 +12,7 @@ class Credentials:
     def save_account(self):
 
         '''
-        save_contact method saves contact objects into contact_list
+        save_account method saves Credentials objects into accounts_list
         '''
 
         Credentials.accounts_list.append(self)
