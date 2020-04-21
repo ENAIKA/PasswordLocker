@@ -215,6 +215,19 @@ def main():
                     else:
                         print("The account does not exist")
 
+                elif short_codes == 'cp':
+                    print("The password will be copied to clipboard")
+                    print("Account Name")
+                    accountname=input()
+                    if check_existing_account(accountname):
+                        accountname = find_account(accountname)
+                    
+                        copy_clipboard(accountname.accountName) #copy password.
+                        print ('\n')
+                        print(f"Account {accountname.accountName}'s password: {accountname.password} copied to clipboard successfully")
+                    else:
+                        print("The account does not exist")
+
                 elif short_codes == "ex":
                     print("Logging out.  Bye .......")
                     break
