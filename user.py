@@ -44,7 +44,7 @@ class User:
         '''
         Method that checks if a user exists from the users list.
         Args:
-            firstname: name to e searched
+            firstname: name to be searched
         Returns :
             Boolean: dependent on the existance of the user
         '''
