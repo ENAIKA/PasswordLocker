@@ -1,5 +1,6 @@
 import unittest # Importing the unittest module
-from accounts import Credentials # Importing the accounts class
+import pyperclip
+from accounts import Credentials # Importing the Credentials class
 
 class TestContact(unittest.TestCase):
 
@@ -72,7 +73,7 @@ class TestContact(unittest.TestCase):
 
         found_account = Credentials.find_account("Instagram")
 
-        self.assertEqual(found_account.accountName,test_account.accountName)
+        self.assertEqual(found_account.password,test_account.password)
 
     def test_account_exists(self):
         '''
@@ -94,6 +95,17 @@ class TestContact(unittest.TestCase):
 
         self.assertEqual(Credentials.display_accounts(),Credentials.accounts_list)
 
+
+    def test_copy_password(self):
+        '''
+        Test to copy password from a found account
+        '''
+
+        self.new_account.save_account()
+        
+        self.new_account.copy_password("Twitter")
+
+        self.assertEqual(self.new_account.password, pyperclip.paste())
 
 if __name__ == '__main__':
     unittest.main()
