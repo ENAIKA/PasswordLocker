@@ -151,16 +151,16 @@ def main():
             print("Enter password")
             password = input()
                         
-            if check_existing(username):
-                for user in display_user():
-
-                    if password==find_users(username).password:
-                        print("Login was successful")
-                        print('-' * 20)
-                        
-                    else:
-                        print("please check the password")
+            if find_users(username):
                 
+
+                if password==find_users(username).password:
+                    print("Login was successful")
+                    print('-' * 20)
+                    
+                else:
+                    print("please check the password")
+                    continue
                 while True:
                     print("Use these short codes : ca - create new account credentials, da - display accounts, fa -find account,cp-copy account password,del-delete account, ex -exit")
     
