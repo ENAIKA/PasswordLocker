@@ -107,5 +107,18 @@ class TestContact(unittest.TestCase):
 
         self.assertEqual(self.new_account.password, pyperclip.paste())
 
+    def test_gen_password(self):
+        '''
+        Test to generate password for account
+        '''
+        
+        account=Credentials.gen_password("Facebook")
+        test_account=Credentials("Facebook","Nakish",account)
+        test_account.save_account()
+        test_account.password=Credentials.gen_password(test_account)
+        
+
+        self.assertEqual(test_account.password, account)
+
 if __name__ == '__main__':
     unittest.main()
