@@ -29,7 +29,7 @@ class TestUser(unittest.TestCase):
 
     def test_save_user(self):
         '''
-        test_save_contact test case to test if the user object is saved into
+        test_save_user test case to test if the user object is saved into
          the users list
         '''
         self.new_user.save_user() # saving the new user
