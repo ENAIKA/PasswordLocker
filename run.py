@@ -84,6 +84,12 @@ def copy_clipboard(accountName):
     '''
     return Credentials.copy_password(accountName)
 
+def gen_password(accountName):
+    '''
+    Function to generate passwords
+    '''
+    return Credentials.gen_password(accountName)
+
 def main():
     print("Hello Welcome to passwordLocker What is your name?")
     user_name = input()
@@ -169,11 +175,14 @@ def main():
 
                     print("Enter your password")
                     pword = input()
+                    if len(pword)==0:
+                        password=gen_password(accountname)
+                    else:
+                        password=pword
 
-
-                    save_account(create_account(accountname,username,pword)) # create and save new account credential.
+                    save_account(create_account(accountname,username,password)) # create and save new account credential.
                     print ('\n')
-                    print(f"New Account: {accountname} username:{username} password:{pword} was created successfully")
+                    print(f"New Account: {accountname} username:{username} password:{password} was created successfully")
                     print ('\n')
 
                 elif short_codes == 'da':
