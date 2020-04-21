@@ -1,4 +1,5 @@
 import pyperclip
+import random
 
 class Credentials:
     '''
@@ -69,5 +70,11 @@ class Credentials:
         account_found = Credentials.find_account(accountName)
         pyperclip.copy(account_found.password)
 
-
-    
+    # @classmethod
+    def gen_password(self):
+        first = ("pass", "word", "!gen", "rator@", "Vegan", "Coder5", "pep8", "CoolPy", "Python3.", "Fast#", "AmericanDream", "Blacklist5", "Hanna%")
+        second = str((range(0,20)))
+        pfirst = random.choice(first)
+        psecond = random.choice(second)
+        password = (pfirst + psecond)
+        return password
