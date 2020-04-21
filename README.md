@@ -23,6 +23,7 @@ Follow this steps:
 ### Specifications
 | Behaviour                | Input example           | Output Example                   |
 | ---------------------------|:-----------------------:| --------------------------------:|
+|  pick short code     | l and the user is not registered| False/Ask user to use short codes provided |
 | pick short code              |da,du | True/search results display if they exist|
 |  pick short code      |  fa,fu | True/If user or account available display results else display doesn't exist|
 |  pick short code      | cu,ca | True/create user or account credentials respectively  |
