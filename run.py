@@ -152,97 +152,99 @@ def main():
             password = input()
                         
             if check_existing(username):
-                if password==find_users(username).password:
-                    print("Login was successful")
-                    print('-' * 20)
-                    
-                else:
-                    print("please check the password")
+                for user in display_user():
 
-            while True:
-                print("Use these short codes : ca - create new account credentials, da - display accounts, fa -find account,cp-copy account password,del-delete account, ex -exit")
-
-                short_codes = input().lower()
-                if short_codes == 'ca':
-                    print("New Account Credentials")
-                    print("-"*10)
-                    
-                    print ("Account name i.e facebook, twitter ....")
-                    accountname = input()
-
-                    print ("username ....")
-                    username = input()
-
-                    print("Enter your password")
-                    pword = input()
-                    if len(pword)==0:
-                        password=gen_password(accountname)
-                    else:
-                        password=pword
-
-                    save_account(create_account(accountname,username,password)) # create and save new account credential.
-                    print ('\n')
-                    print(f"New Account: {accountname} username:{username} password:{password} was created successfully")
-                    print ('\n')
-
-                elif short_codes == 'da':
-
-                    if display_account():
-                        print("Here is a list of all accounts")
-                        print("\n")                    
-
-                        for account in display_account():
-                            print(f"{account.accountName} {account.username} {account.password}")
-                            print ('\n')
-                                    
-                    else:
-                        print('\n')
-                        print("No account\n")
-
-                elif short_codes == 'fa':
-
-                    print("Enter the account name you want to search")
-
-                    search_account = input()
-                    if check_existing_account(search_account):
-                        search_account = find_account(search_account)
-                        print(f"{search_account.accountName} {search_account.username} {search_account.password}")
+                    if password==find_users(username).password:
+                        print("Login was successful")
                         print('-' * 20)
-
+                        
                     else:
-                        print("The account does not exist")
-                elif short_codes == 'del':
-                    print("The account will be deleted")
-                    print("Account Name")
-                    accountname=input()
-                    if check_existing_account(accountname):
-                        accountname = find_account(accountname)
-                    
-                        del_account((accountname)) #del account.
+                        print("please check the password")
+                
+                while True:
+                    print("Use these short codes : ca - create new account credentials, da - display accounts, fa -find account,cp-copy account password,del-delete account, ex -exit")
+    
+                    short_codes = input().lower()
+                    if short_codes == 'ca':
+                        print("New Account Credentials")
+                        print("-"*10)
+                        
+                        print ("Account name i.e facebook, twitter ....")
+                        accountname = input()
+    
+                        print ("username ....")
+                        username = input()
+    
+                        print("Enter your password")
+                        pword = input()
+                        if len(pword)==0:
+                            password=gen_password(accountname)
+                        else:
+                            password=pword
+    
+                        save_account(create_account(accountname,username,password)) # create and save new account credential.
                         print ('\n')
-                        print(f"Account {accountname.accountName} deleted successfully")
-                    else:
-                        print("The account does not exist")
-
-                elif short_codes == 'cp':
-                    print("The password will be copied to clipboard")
-                    print("Account Name")
-                    accountname=input()
-                    if check_existing_account(accountname):
-                        accountname = find_account(accountname)
-                    
-                        copy_clipboard(accountname.accountName) #copy password.
+                        print(f"New Account: {accountname} username:{username} password:{password} was created successfully")
                         print ('\n')
-                        print(f"Account {accountname.accountName}'s password: {accountname.password} copied to clipboard successfully")
+    
+                    elif short_codes == 'da':
+    
+                        if display_account():
+                            print("Here is a list of all accounts")
+                            print("\n")                    
+    
+                            for account in display_account():
+                                print(f"{account.accountName} {account.username} {account.password}")
+                                print ('\n')
+                                        
+                        else:
+                            print('\n')
+                            print("No account\n")
+    
+                    elif short_codes == 'fa':
+    
+                        print("Enter the account name you want to search")
+    
+                        search_account = input()
+                        if check_existing_account(search_account):
+                            search_account = find_account(search_account)
+                            print(f"{search_account.accountName} {search_account.username} {search_account.password}")
+                            print('-' * 20)
+    
+                        else:
+                            print("The account does not exist")
+                    elif short_codes == 'del':
+                        print("The account will be deleted")
+                        print("Account Name")
+                        accountname=input()
+                        if check_existing_account(accountname):
+                            accountname = find_account(accountname)
+                        
+                            del_account((accountname)) #del account.
+                            print ('\n')
+                            print(f"Account {accountname.accountName} deleted successfully")
+                        else:
+                            print("The account does not exist")
+    
+                    elif short_codes == 'cp':
+                        print("The password will be copied to clipboard")
+                        print("Account Name")
+                        accountname=input()
+                        if check_existing_account(accountname):
+                            accountname = find_account(accountname)
+                        
+                            copy_clipboard(accountname.accountName) #copy password.
+                            print ('\n')
+                            print(f"Account {accountname.accountName}'s password: {accountname.password} copied to clipboard successfully")
+                        else:
+                            print("The account does not exist")
+    
+                    elif short_codes == "ex":
+                        print("Logging out.  Bye .......")
+                        break
                     else:
-                        print("The account does not exist")
-
-                elif short_codes == "ex":
-                    print("Logging out.  Bye .......")
-                    break
-                else:
-                    print("I really didn't get that. Please use the short codes")
-
+                        print("I really didn't get that. Please use the short codes")
+    
         elif short_code == "ex":
             print("Bye .......")
             break
