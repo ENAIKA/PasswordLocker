@@ -159,8 +159,8 @@ def main():
                     print('-' * 20)
                     
                 else:
-                    print("please check the password")
-                    continue
+                    print("please check the password and login again")
+                    break
                 while True:
                     print("Use these short codes : ca - create new account credentials, da - display accounts, fa -find account,cp-copy account password,del-delete account, ex -exit")
     
@@ -188,11 +188,11 @@ def main():
                         print ('\n')
     
                     elif short_codes == 'da':
-    
+                     
                         if display_account():
                             print("Here is a list of all accounts")
                             print("\n")                    
-    
+                            
                             for account in display_account():
                                 print(f"{account.accountName} {account.username} {account.password}")
                                 print ('\n')
